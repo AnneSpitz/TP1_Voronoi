@@ -7,5 +7,5 @@ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${d}/CMake")
 find_package(Imagine)
 
 project(Voronoi)
-add_executable(Voronoi main.cpp file.cpp file.h point.h)
+add_executable(Voronoi main.cpp file.cpp point.cpp file.h point.h)
 ImagineUseModules(Voronoi Graphics)

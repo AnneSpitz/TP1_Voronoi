@@ -1,6 +1,9 @@
 // Imagine++ project
-// Project:  File, TP Algorithmique et Structure de Données
-// Author:   Clément RIU, Anne SPITZ
+// Project:  File
+// Author:   Pascal Monasse
+
+
+
 
 #include "file.h"
 #include<iostream>
@@ -13,20 +16,15 @@ using namespace std;
 typedef fileListe file;
 //typedef fileTableau file;
 
-const int n=256;
+const int n=500;
 
-//*******************TO DO LIST********************************************
-//
-//*******NE PAS OUBLIER DE RÉPONDRE À LA QUESTION EN COMMENTAIRE***********
-//
-//*************************************************************************
-
-
-
-
+/*
+Réponse à la question :
+ On ne peut pas utiliser un algorithme récursif car le premier point traité se propagerait sur l'ensemble de l'écran.
+*/
 
 void pushVoisin(bool t[n][n], point P, file & f, int i, int j){
-    if (!t[P.x+i][P.y+j]){
+    if (!t[P.x+i][P.y+j] && P.x+i<n && P.x+i>0 && P.y+j<n && P.y+j>0){
         point Q{P.x+i,P.y+j,P.c};
         t[Q.x][Q.y]=true;
         drawPoint(Q.x,Q.y,Q.c);
@@ -35,6 +33,7 @@ void pushVoisin(bool t[n][n], point P, file & f, int i, int j){
 }
 
 
+//examine les voisins dans le cadre de la distance max
 void voisins0(bool t[n][n], point P, file & f){
     pushVoisin(t, P, f, 1, 0);
     pushVoisin(t, P, f, 0, 1);
@@ -42,7 +41,7 @@ void voisins0(bool t[n][n], point P, file & f){
     pushVoisin(t, P, f, 0, -1);
 }
 
-
+//examine les voisins dans le cadre de la distance 1
 void voisins1(bool t[n][n], point P, file & f){
     pushVoisin(t, P, f, 1, 0);
     pushVoisin(t, P, f, 0, 1);
@@ -81,7 +80,8 @@ int main() {
     openWindow(n,n);
     cout << "Clics pour ajouter des points, clic droit pour terminer" << endl;
 
-    //colorier un point : drawPoint(x,y,Col)
+
+
     int clic;
 
     clic = getMouse(x, y);

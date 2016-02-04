@@ -2,21 +2,27 @@
 #include <iostream>
 #include <cassert>
 
+
+
 // --- fileListe ---
 
 fileListe::fileListe() {}
+
 fileListe::~fileListe() {}
 
 bool fileListe::empty() const {
-    return true;
+    if (L.size()==0){return (true);}
+    else {return (false);}
 }
 
 void fileListe::push(point p) {
-
+    L.push_back(p);
 }
 
 point fileListe::pop() {
     point p;
+    p.assigne(L.front());
+    L.pop_front();
     return p;
 }
 
