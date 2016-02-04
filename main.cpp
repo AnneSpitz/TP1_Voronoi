@@ -17,13 +17,9 @@ const int n=256;
 
 //*******************TO DO LIST********************************************
 //
-//*******NE PAS OUBLIER DE RÉPONDRE À LA QUESTION EN COMMENTAIRE*****************
+//*******NE PAS OUBLIER DE RÉPONDRE À LA QUESTION EN COMMENTAIRE***********
 //
-//*******************************************************************************
-
-
-
-//***************Fin de la to-do list********************************************
+//*************************************************************************
 
 
 
@@ -39,14 +35,12 @@ void pushVoisin(bool t[n][n], point P, file & f, int i, int j){
 }
 
 
-
 void voisins0(bool t[n][n], point P, file & f){
     pushVoisin(t, P, f, 1, 0);
     pushVoisin(t, P, f, 0, 1);
     pushVoisin(t, P, f, -1, 0);
     pushVoisin(t, P, f, 0, -1);
 }
-
 
 
 void voisins1(bool t[n][n], point P, file & f){
@@ -61,15 +55,14 @@ void voisins1(bool t[n][n], point P, file & f){
 }
 
 
-
-
 void add(file& f, bool t[n][n], int x, int y, Color c) {
 }
+
 
 int main() {
     srand((unsigned int)time(0));
     file f; // File vide
-    bool t[n][n];  // Tableau des points deja vus
+    bool t[n][n];  // Tableau des points déjà vus
     int x,y;
 
     for (int i=0; i<n*n ; i++){
@@ -118,7 +111,7 @@ int main() {
         }
     }
 
-    
+
     endGraphics();
     return 0;
 }
