@@ -1,6 +1,7 @@
 // Imagine++ project
 // Project:  File
 // Author:   Pascal Monasse
+// TP réalisé par Clément RIU et Anne SPITZ
 
 
 
@@ -12,20 +13,23 @@
 using namespace Imagine;
 using namespace std;
 
-// Mettre en commentaire une et une seule des deux lignes suivantes
-typedef fileListe file;
-//typedef fileTableau file;
 
-const int n=500;
+//typedef fileListe file;
+typedef fileTableau file;
+
+const int n=300;
 
 /*
 Réponse à la question :
  On ne peut pas utiliser un algorithme récursif car le premier point traité se propagerait sur l'ensemble de l'écran.
 */
 
+
+//Cette fonction examine si le voisin déterminé par la direction (i,j) a déjà été traité ou non
+//Si le voisin n'a pas été traité, on le dessine puis on le note comme tel via le tableau de booléen
 void pushVoisin(bool t[n][n], point P, file & f, int i, int j){
     if (!t[P.x+i][P.y+j] && P.x+i<n && P.x+i>0 && P.y+j<n && P.y+j>0){
-        point Q{P.x+i,P.y+j,P.c};
+        point Q(P.x+i,P.y+j,P.c);
         t[Q.x][Q.y]=true;
         drawPoint(Q.x,Q.y,Q.c);
         f.push(Q);
@@ -54,14 +58,11 @@ void voisins1(bool t[n][n], point P, file & f){
 }
 
 
-void add(file& f, bool t[n][n], int x, int y, Color c) {
-}
-
 
 int main() {
     srand((unsigned int)time(0));
     file f; // File vide
-    bool t[n][n];  // Tableau des points déjà vus
+    bool t[n][n];  // Tableau des points déjà traités
     int x,y;
 
     for (int i=0; i<n*n ; i++){
@@ -78,7 +79,7 @@ int main() {
     }
 
     openWindow(n,n);
-    cout << "Clics pour ajouter des points, clic droit pour terminer" << endl;
+    cout << "Clics pour ajouter des points, clic droit pour lancer le programme." << endl;
 
 
 
@@ -88,7 +89,7 @@ int main() {
 
     while(clic!=3) {
         Color col(rand()%256,rand()%256,rand()%256);
-        point P{x,y,col};
+        point P(x,y,col);
         f.push(P);
         t[x][y]=true;
 
@@ -105,7 +106,6 @@ int main() {
         if (d1==0){
             voisins0(t, P, f);
         }
-
         if (d1==1){
             voisins1(t, P, f);
         }

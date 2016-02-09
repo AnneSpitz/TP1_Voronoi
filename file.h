@@ -4,6 +4,7 @@
 
 class fileListe {
     std::list<point> L;
+
 public:
     fileListe();
     ~fileListe();
@@ -18,6 +19,7 @@ class fileTableau {
     // Indices: - first: celui qui va etre servi, 
     //          - last: place libre pour le prochain arrivant
     int first,last;
+
 public:
     fileTableau();
     ~fileTableau();
